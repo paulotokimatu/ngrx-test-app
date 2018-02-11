@@ -1,3 +1,7 @@
-<p>
-  task-list works!
-</p>
+<ul>
+  <li *ngFor="let task of tasks; let i = index">
+    {{ task.title }} | Created at: {{ task.createdAt | date }} | Status: {{ task.status | uppercase}}
+    <button *ngIf="task.status === 'pending'" (click)="completeTask(i)">Done</button>
+    <button (click)="removeTask(i)">Remove</button>
+  </li>
+</ul>

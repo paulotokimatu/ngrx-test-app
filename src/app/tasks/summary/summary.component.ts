@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as TasksReducer from '../../store/tasks/tasks.reducer';
+import { TasksState } from '../../store/tasks/tasks.state';
 
 @Component({
   selector: 'todo-summary',
@@ -10,9 +11,9 @@ import * as TasksReducer from '../../store/tasks/tasks.reducer';
   styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
-  pendingTasks$: Observable<any>;
+  pendingTasks$: Observable<number>;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<TasksState>) {
     this.pendingTasks$ = store.select(TasksReducer.getPendingNumber);
   }
 

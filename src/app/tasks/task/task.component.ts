@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import Task from './task.model';
 import * as TodoAction from '../../store/tasks/tasks.action';
+import { TasksState } from '../../store/tasks/tasks.state';
 
 @Component({
   selector: 'todo-task',
@@ -16,7 +17,7 @@ export class TaskComponent implements OnInit {
   @Input()
   index: number;
 
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<TasksState>) { }
 
   ngOnInit() {
   }

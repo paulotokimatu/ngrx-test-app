@@ -10,12 +10,6 @@ export class GetTasks implements Action {
   readonly type = GET_TASKS;
 }
 
-export class ChangeTasks implements Action {
-  readonly type = CHANGE_TASKS;
-
-  constructor(public payload: string) {}
-}
-
 export class AddTask implements Action {
   readonly type = ADD_TASK;
 
@@ -34,4 +28,4 @@ export class RemoveTask implements Action {
   constructor(public payload: number) {}
 }
 
-export type All = GetTasks | ChangeTasks | AddTask | CompleteTask | RemoveTask;
+export type All = GetTasks | AddTask | CompleteTask | RemoveTask;

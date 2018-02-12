@@ -27,11 +27,6 @@ const defaultState: TasksState = {
 
 export function tasksReducer(state = defaultState, action: Action): TasksState {
   switch (action.type) {
-    case TasksActions.CHANGE_TASKS: {
-      const test = { ...state };
-      test.tasks[0].title = action.payload;
-      return { ...test };
-    }
     case TasksActions.GET_TASKS: {
       return { ...state };
     }

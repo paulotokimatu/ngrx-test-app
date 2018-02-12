@@ -56,11 +56,11 @@ export function tasksReducer(state = defaultState, action: Action): TasksState {
   }
 }
 
-export const getTasksState = createFeatureSelector<TasksState>('todoState');
+export const getTasksState = createFeatureSelector<TasksState>('taskState');
 
 export const getTasks = createSelector(
   getTasksState,
-    (state: TasksState) => state.tasks
+  (state: TasksState) => state.tasks
 );
 
 export const getPendingNumber = createSelector(

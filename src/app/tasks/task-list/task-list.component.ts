@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as TodoAction from '../../store/tasks/tasks.action';
 import * as TodoReducer from '../../store/tasks/tasks.reducer';
 
 @Component({
@@ -18,13 +17,5 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  completeTask(i) {
-    this.store.dispatch(new TodoAction.CompleteTask(i));
-  }
-
-  removeTask(i) {
-    this.store.dispatch(new TodoAction.RemoveTask(i));
   }
 }

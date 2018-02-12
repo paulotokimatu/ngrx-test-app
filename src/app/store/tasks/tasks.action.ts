@@ -1,7 +1,4 @@
-import { TasksState } from './tasks.state'; 
-import Task from '../../tasks/task/task.model'; 
-
-import { Action } from '@ngrx/store'; 
+import { Action } from '@ngrx/store';
 
 export const GET_TASKS = 'GET_TASKS';
 export const CHANGE_TASKS = 'CHANGE_TASKS';

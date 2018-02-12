@@ -23,13 +23,12 @@ const defaultState: TasksState = {
       status: 'pending'
     }
   ],
-}
+};
 
 export function tasksReducer(state = defaultState, action: Action): TasksState {
-  console.log(state)
   switch (action.type) {
     case TasksActions.CHANGE_TASKS: {
-      let test = { ...state };
+      const test = { ...state };
       test.tasks[0].title = action.payload;
       return { ...test };
     }
@@ -37,17 +36,17 @@ export function tasksReducer(state = defaultState, action: Action): TasksState {
       return { ...state };
     }
     case TasksActions.ADD_TASK: {
-      let stateCopy = { ...state };
+      const stateCopy = { ...state };
       stateCopy.tasks.push(Task.generateNewTask(action.payload));
       return { ...stateCopy };
     }
     case TasksActions.COMPLETE_TASK: {
-      let stateCopy = { ...state };
+      const stateCopy = { ...state };
       stateCopy.tasks[action.payload].status = 'done';
-      return { ...stateCopy }
+      return { ...stateCopy };
     }
     case TasksActions.REMOVE_TASK: {
-      let stateCopy = { ...state };
+      const stateCopy = { ...state };
       stateCopy.tasks.splice(action.payload, 1);
       return { ...stateCopy };
     }
@@ -66,7 +65,7 @@ export const getTasks = createSelector(
 export const getPendingNumber = createSelector(
   getTasksState,
   (state: TasksState) => state.tasks.reduce((total, task) => {
-    if (task.status === "pending") {
+    if (task.status === 'pending') {
       return total + 1;
     }
     return total;

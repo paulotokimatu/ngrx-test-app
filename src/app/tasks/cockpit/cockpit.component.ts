@@ -9,8 +9,8 @@ import * as TodoAction from '../../store/tasks/tasks.action';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-  taskInput: string = '';
-  
+  taskInput = '';
+
   constructor(private store: Store<any>) { }
 
   ngOnInit() {

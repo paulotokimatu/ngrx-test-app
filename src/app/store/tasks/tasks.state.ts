@@ -1,5 +1,5 @@
 import Task from '../../tasks/task/task.model';
 
-export interface TasksState{
+export interface TasksState {
   tasks: Task[];
 }

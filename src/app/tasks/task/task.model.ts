@@ -4,16 +4,16 @@ export default class Task {
   status: string;
 
   constructor() {
-    this.title = ""
-    this.createdAt = new Date()
-    this.status = ""
+    this.title = '';
+    this.createdAt = new Date();
+    this.status = '';
   }
 
   static generateNewTask(newTask): Task {
     return {
         title: newTask,
         createdAt: new Date(),
-        status: "pending"
-    }
+        status: 'pending'
+    };
   }
 }

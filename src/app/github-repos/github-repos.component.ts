@@ -17,6 +17,7 @@ export class GithubReposComponent implements OnInit {
   }
 
   fetchReposData() {
+    /* This Http request could have been placed in a service, but it is easier to follow if all actions are centered in the Store.  */
     this.store.dispatch(new GithubReposAction.LoadRepos(this.githubUser));
   }
 }

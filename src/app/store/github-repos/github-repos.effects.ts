@@ -1,6 +1,5 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/catch';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -13,6 +12,8 @@ import * as GithubReposActions from './github-repos.action';
 const baseApiUrl = 'https://api.github.com/users/';
 const apiEndpoint = '/repos';
 
+/* NgRx effects can trigger side-effects and also helps structure a component. In this case, this Http request could have been placed in a service, but it is easier
+to follow if all actions are centered in the Store.  */
 @Injectable()
 export class GithubReposEffects {
 
@@ -24,7 +25,6 @@ export class GithubReposEffects {
     .mergeMap(action =>
       this.http.get(baseApiUrl + action.payload + apiEndpoint)
         .map((data) => {
-          console.log(data);
           return new GithubReposActions.UpdateRepos({user: action.payload, repos: data});
         })
     );

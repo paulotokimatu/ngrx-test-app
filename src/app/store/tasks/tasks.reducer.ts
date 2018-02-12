@@ -50,6 +50,8 @@ export function tasksReducer(state = defaultState, action: Action): TasksState {
   }
 }
 
+/* Using selectors to watch for data changes is convenient because you can specify the data in the state you want to return and it also improves
+performance by triggering changes only when that data changes. */
 export const getTasksState = createFeatureSelector<TasksState>('taskState');
 
 export const getTasks = createSelector(

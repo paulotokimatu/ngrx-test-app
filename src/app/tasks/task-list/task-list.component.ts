@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
+import * as TodoAction from '../../store/tasks/tasks.action';
+import * as TodoReducer from '../../store/tasks/tasks.reducer';
 
 @Component({
   selector: 'todo-task-list',
@@ -6,17 +11,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  tasks: any;
+  tasks$: Observable<any>;
 
-  constructor() { }
+  constructor(private store: Store<any>) {
+    this.tasks$ = store.select(TodoReducer.getTasks);
+  }
 
   ngOnInit() {
   }
 
   completeTask(i) {
+    this.store.dispatch(new TodoAction.CompleteTask(i));
   }
 
   removeTask(i) {
+    this.store.dispatch(new TodoAction.RemoveTask(i));
   }
-
 }

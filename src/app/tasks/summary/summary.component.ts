@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
+import * as TasksReducer from '../../store/tasks/tasks.reducer';
 
 @Component({
   selector: 'todo-summary',
@@ -6,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
-  pendingTasks: number = 0;
+  pendingTasks$: Observable<any>;
 
-  constructor() { }
+  constructor(private store: Store<any>) {
+    this.pendingTasks$ = store.select(TasksReducer.getPendingNumber);
+  }
 
   ngOnInit() {
   }

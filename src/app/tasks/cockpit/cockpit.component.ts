@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as TodoAction from '../../store/tasks/tasks.action';
 
 @Component({
   selector: 'todo-cockpit',
@@ -8,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class CockpitComponent implements OnInit {
   taskInput: string = '';
   
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
   }
 
+  addTask() {
+    this.store.dispatch(new TodoAction.AddTask(this.taskInput));
+    this.taskInput = '';
+  }
 }
